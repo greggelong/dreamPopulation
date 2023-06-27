@@ -25,7 +25,7 @@ function draw(){
 }
 
 
-function mousePressed(){
+function mouseClicked(){
   let fate = random([instr,instr2])
   if (!pressed){
     pressed = true;

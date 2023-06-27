@@ -11,3 +11,6 @@ a kinetic branch made from a very optimistic network graph that is trying to rea
 
 a population of kinetic branches grown from optimistic and pessimistic network graphs, they can compete for the realization of a certain fate.
  #creativecoding #codeart #p5js #processing #optimistic #tree #branch
+
+
+the interaction is working better with mouseClicked and mouse released and a boolean 

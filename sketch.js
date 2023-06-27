@@ -24,7 +24,7 @@ function draw(){
 }
 
 
-function mouseReleased(){
+function mousePressed(){
   let fate = random([instr,instr2])
   if (!fated){
   for (let i =0;i<80;i++){

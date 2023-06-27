@@ -3,6 +3,7 @@
 let fated = false;
 let greg; //variable to hold gurtle
 let population=[];
+let pressed = false //for de bouncing
 function setup() {
   createCanvas(windowWidth,windowHeight);
   angleMode(DEGREES);
@@ -26,16 +27,24 @@ function draw(){
 
 function mousePressed(){
   let fate = random([instr,instr2])
+  if (!pressed){
+    pressed = true;
   if (!fated){
-  for (let i =0;i<80;i++){
+  for (let i =0;i<population.length;i++){
     population[i].gene = fate
     fated = true
   }
 } else{
-  for (let i =0;i<80;i++){
+  for (let i =0;i<population.length;i++){
     population[i].gene = random([instr,instr2])
     fated = false
   }
 
 }
+  }
+}
+
+
+function mouseReleased(){
+  pressed = false;
 }

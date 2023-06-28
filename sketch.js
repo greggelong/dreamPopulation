@@ -7,7 +7,7 @@ let pressed = false //for de bouncing
 function setup() {
   createCanvas(windowWidth,windowHeight);
   angleMode(DEGREES);
-  for (let i =0;i<80;i++){
+  for (let i =0;i<70;i++){
     population[i]= new Creature(color(128,255),random(5,30))
   
   }
@@ -20,7 +20,20 @@ function draw(){
   for (let i = 0; i<population.length; i++){
   population[i].show();
   population[i].squirm(frameCount)
+  population[i].wither(); // forgot to call tis
   population[i].move();
+  }
+  
+  if (!fated){
+    fill(255,255,0)
+    textSize(30)
+    noStroke()
+    text("Press anywhere to choose fate",10,100)
+  } else{
+    fill(255,0,0)
+    textSize(20)
+    noStroke()
+    text("After result press anywhere reset population",10,100)
   }
 }
 
@@ -31,14 +44,22 @@ function mouseClicked(){
     pressed = true;
   if (!fated){
   for (let i =0;i<population.length;i++){
-    population[i].gene = fate
+     if(population[i].gene === fate){
+      population[i].dying = true
+    
+      
+     }
     fated = true
   }
 } else{
   for (let i =0;i<population.length;i++){
     population[i].gene = random([instr,instr2])
-    fated = false
+    population[i].dying = false;
+    population[i].dead = false;
+    population[i].sz = random(5,30); //reset size
+    population[i].deathClock = random(100,500); // need to reset death clock too
   }
+  fated = false
 
 }
   }

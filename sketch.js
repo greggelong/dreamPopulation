@@ -5,7 +5,7 @@ let greg; //variable to hold gurtle
 let population=[];
 let pressed = false //for de bouncing
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  createCanvas(800,800);
   angleMode(DEGREES);
   for (let i =0;i<70;i++){
     population[i]= new Creature(color(128,255),random(5,30))

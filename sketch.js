@@ -7,7 +7,7 @@ let pressed = false //for de bouncing
 function setup() {
   createCanvas(800,800);
   angleMode(DEGREES);
-  for (let i =0;i<70;i++){
+  for (let i =0;i<35;i++){
     population[i]= new Creature(color(128,255),random(5,30))
   
   }

@@ -28,12 +28,12 @@ function draw(){
     fill(255,255,0)
     textSize(30)
     noStroke()
-    text("Press anywhere to choose fate",10,100)
+    text("Press anywhere to choose fate",10,50)
   } else{
     fill(255,0,0)
     textSize(20)
     noStroke()
-    text("After result press anywhere reset population",10,100)
+    text("After result press anywhere reset population",10,50)
   }
 }
 

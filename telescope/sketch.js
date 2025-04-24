@@ -5,24 +5,24 @@ let pressed = false; //for de bouncing
 let bg;
 let cnv;
 
-//function preload() {
-// bg = loadImage("bgbj.jpg");
-//}
+function preload() {
+  bg = loadImage("bgbj.jpg");
+}
 function setup() {
   pixelDensity(1);
-  cnv = createCanvas(windowWidth, windowHeight);
-  //let cx = (windowWidth - cnv.width) / 2;
-  //let cy = (windowHeight - cnv.height) / 2;
-  //cnv.position(cx, cy);
-  //bg.resize(width, height);
+  cnv = createCanvas(658, 375);
+  let cx = (windowWidth - cnv.width) / 2;
+  let cy = (windowHeight - cnv.height) / 2;
+  cnv.position(cx, cy);
+  bg.resize(width, height);
   angleMode(DEGREES);
-  for (let i = 0; i < 35; i++) {
+  for (let i = 0; i < 21; i++) {
     population[i] = new Creature(color(255, 255), random(5, 30));
   }
 }
 
 function draw() {
-  background(0);
+  background(bg);
   for (let i = 0; i < population.length; i++) {
     population[i].show();
     population[i].squirm(frameCount);

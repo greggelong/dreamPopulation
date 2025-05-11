@@ -9,6 +9,7 @@ html, body {
     margin: 0;
     background-color: black;
     display: flex;
+    overflow: hidden; /* Hide scrollbars */
   
     /* This centers our sketch horizontally. */
     justify-content: center;

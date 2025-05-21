@@ -4,9 +4,15 @@ let population = [];
 let pressed = false; //for de bouncing
 let bg;
 let cnv;
+let dy;
+let x, y, angle;
+let noiseOffsetX = 0;
+let noiseOffsetY = 1000;
+let noiseOffsetAngle = 2000;
 
 function preload() {
   bg = loadImage("bgbj.jpg");
+  dy1 = loadImage("dy.png");
 }
 function setup() {
   pixelDensity(1);
@@ -16,6 +22,9 @@ function setup() {
   cnv.position(cx, cy);
   bg.resize(width, height);
   angleMode(DEGREES);
+  dy1.resize(0, 100);
+  // to crop a segment of the image using coordinates
+  dy = dy1.get(0, 0, dy1.width, 70);
   for (let i = 0; i < 21; i++) {
     population[i] = new Creature(color(255, 255), random(5, 30));
   }
@@ -23,6 +32,26 @@ function setup() {
 
 function draw() {
   background(bg);
+  // Update position and angle with Perlin noise
+  x = noise(noiseOffsetX) * width;
+  y = noise(noiseOffsetY) * height;
+  angle = noise(noiseOffsetAngle) * TWO_PI;
+
+  noiseOffsetX += 0.005;
+  noiseOffsetY += 0.005;
+  noiseOffsetAngle += 0.002;
+  // Constrain to keep entire image on canvas
+  let halfW = dy.width / 2;
+  let halfH = dy.height / 2;
+  x = constrain(x, halfW, width - halfW);
+  y = constrain(y, halfH, height - halfH);
+
+  push();
+  translate(x, y);
+  rotate(angle);
+  image(dy, 0, 0);
+  pop();
+
   for (let i = 0; i < population.length; i++) {
     population[i].show();
     population[i].squirm(frameCount);
